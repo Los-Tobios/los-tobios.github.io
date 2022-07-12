@@ -2,11 +2,37 @@
 <html>
     <head>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-        <title itemprop="name">tobios&#039;s blog - Just a simple blog for you</title>
+        <title itemprop="name">Just a simple blog for you</title>
     </head> 
     <body>         
       <script> 
-           window.location.href="https://tobios.eu.org"; 
+       function ping(address) {
+      var img = new Image();
+      var start = new Date().getTime();
+      var hasFinish = false;
+      img.onload = function() {
+        if ( !hasFinish ) {
+          hasFinish = true;
+          console.log('Ping ' + address + ' success. ');
+          window.location.href="http://www.sonder.tk:88"; 
+        }
+      };
+      img.onerror = function() {
+          hasFinish = false;
+          console.log('Ping ' + address + ' fail.. ');
+          window.location.href="https://tobios.eu.org"; 
+      };
+      //img.src = address + '/?' + start;
+      img.src = address;
+      setTimeout(()=>{
+        if(hasFinish){
+          hasFinish = false
+          console.log('There is a problem with your network, please refresh the page and try again.');
+        }
+      },1500)
+    }
+  	ping('http://www.sonder.tk:88/wp-content/themes/sakura/images/sinder_logo.png');
+           //window.location.href="https://tobios.eu.org"; 
            //location.replace("http://www.sonder.tk:88"); 
            //location.assign("http://www.sonder.tk:88"); 
            //window.open("http://www.sonder.tk:88"); 
